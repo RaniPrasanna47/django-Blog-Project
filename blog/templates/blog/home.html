@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="feed">
+    <div class="posts">
+        {% for post in posts %}
+        <div class="card">
+            <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+            <p>by {{ post.author }}</p>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post image">
+            {% endif %}
+            <p>{{ post.content|truncatechars:100 }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <aside class="sidebar">
+        <h3>Trending!!</h3>
+        <ul>
+            {% for post in trending %}
+                <li><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+        <h3>Add Post</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add</button>
+        </form>
+    </aside>
+</div>
+{% endblock %}

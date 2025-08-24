@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="profile-card">
+    {% if profile.profile_pic %}
+        <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" class="profile-pic">
+    {% else %}
+        <img src="{% static 'images/default.png' %}" alt="Default Profile" class="profile-pic">
+    {% endif %}
+
+    <h2>{{ profile.user.username }}</h2>
+    <p>{{ profile.bio }}</p>
+
+    {% if user == profile.user %}
+        <a href="{% url 'edit_profile' user.username %}" class="edit-btn">Edit Profile</a>
+    {% endif %}
+
+    <h3>Posts</h3>
+    <ul>
+        {% for post in posts %}
+            <li><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></li>
+        {% empty %}
+            <p>No posts yet.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
