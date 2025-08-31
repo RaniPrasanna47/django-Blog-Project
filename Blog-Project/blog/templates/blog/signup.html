@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}Sign Up • MiniBlog{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'blog/css/auth.css' %}">{% endblock %}
+
+{% block content %}
+<div class="card auth">
+  <h2>Create an account</h2>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-glow">Sign Up</button>
+  </form>
+  <p class="muted">Already registered? <a href="{% url 'login' %}">Login</a></p>
+</div>
+{% endblock %}

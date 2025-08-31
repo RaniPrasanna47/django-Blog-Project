@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}{{ mode }} Post • MiniBlog{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'blog/css/post_form.css' %}">{% endblock %}
+
+{% block content %}
+<div class="card form-card">
+  <h2>{{ mode }} Post</h2>
+  <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <label>Title</label>
+    {{ form.title }}
+    <label>Content</label>
+    {{ form.content }}
+    <label>Image</label>
+    {{ form.image }}
+    <div style="display:flex;gap:10px;margin-top:12px">
+      <button class="btn btn-glow" type="submit">Save</button>
+      <a class="btn ghost" href="{% url 'home' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

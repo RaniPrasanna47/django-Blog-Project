@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}MiniBlog{% endblock %}</title>
+
+  <!-- global base CSS -->
+  <link rel="stylesheet" href="{% static 'blog/css/base.css' %}">
+  {% block extra_css %}{% endblock %}
+
+  <script defer src="{% static 'blog/js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</head>
+<body>
+  <div class="bg-visual"></div>
+
+  <nav class="navbar">
+    <div class="brand"><a href="{% url 'home' %}">MiniBlog</a></div>
+    <div class="search-wrap">
+      <input id="searchInput" type="search" placeholder="Search posts, authors..." value="{{ q|default:'' }}">
+    </div>
+    <div class="nav-links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'profile' user.username %}">Profile</a>
+        <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a class="btn btn-glow" href="{% url 'signup' %}">Sign Up</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <main class="container">
+    {% if messages %}
+      <div class="msgs">
+        {% for m in messages %}
+          <div class="msg {{ m.tags }}">{{ m }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div>© {% now "Y" %} MiniBlog . With ❤️@Rani Prasanna</div>
+  </footer>
+</body>
+</html>

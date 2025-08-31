@@ -1,0 +1,66 @@
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 18px;
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.feed .post-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feed .post-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.post-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #eafcff;
+    text-decoration: none;
+}
+
+.meta {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 6px 0;
+}
+
+.thumb {
+    width: 100%;          /* fit card width */
+    height: auto;         /* keep proportions */
+    max-height: 250px;    /* optional: limit very tall images */
+    object-fit: contain;  /* ✅ don’t crop */
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+    background: #e8fbff;
+}
+
+.excerpt {
+    color: #e9f9ffcc;
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.trending li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+}
+
+.full {
+    width: 100%;
+}

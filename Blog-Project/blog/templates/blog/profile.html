@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}{{ profile_obj.user.username }} • Profile • MiniBlog{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'blog/css/post_detail.css' %}">{% endblock %}
+
+{% block content %}
+<div class="layout">
+  <aside class="card" style="max-width:320px">
+    <div style="display:flex;align-items:center;gap:12px">
+      {% if profile_obj.avatar %}
+        <img src="{{ profile_obj.avatar.url }}" alt="{{ profile_obj.user.username }}" style="width:64px;height:64px;border-radius:50%;object-fit:cover">
+      {% else %}
+        <div style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid #444;">{{ profile_obj.user.username|first|upper }}</div>
+      {% endif %}
+      <div>
+        <div class="post-title" style="margin:0">{{ profile_obj.user.username }}</div>
+        <div class="meta">{{ profile_obj.user.email }}</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;white-space:pre-line">{{ profile_obj.bio|default:"" }}</div>
+    {% if is_owner %}
+      <hr>
+      <h3 style="margin-top:0.5rem">Edit profile</h3>
+      <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <label>Bio</label>
+        {{ form.bio }}
+        <label>Avatar</label>
+        {{ form.avatar }}
+        <button class="btn btn-glow" style="margin-top:10px">Save</button>
+      </form>
+    {% endif %}
+  </aside>
+
+  <section class="feed">
+    <h2 style="margin:0 0 10px 0">Posts by {{ profile_obj.user.username }}</h2>
+    {% if posts %}
+      {% for post in posts %}
+        <article class="card post-card">
+          <a class="post-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          <div class="meta">Published {{ post.created_at|date:"M d, Y" }}</div>
+          <p>{{ post.content|truncatewords:35 }}</p>
+        </article>
+      {% endfor %}
+    {% else %}
+      <div class="card">No posts yet.</div>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

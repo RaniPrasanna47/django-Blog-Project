@@ -1,0 +1,64 @@
+.large {
+    padding: 24px;
+}
+
+.post-title {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.hero {
+    display: block;
+    margin: 24px auto;
+    max-width: 100%;
+    max-height: 400px;  
+    width: auto;
+    height: auto;
+    
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    background: #e8fbff;
+
+    object-fit: contain; 
+}
+
+
+.post-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #e8fbff;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.comments .comment {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.03);
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    font-weight: 800;
+    color: #061b22;
+}
+
+.add-comment textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+    color: inherit;
+    margin-bottom: 8px;
+}

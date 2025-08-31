@@ -1,0 +1,186 @@
+a {
+    text-decoration: none;
+    color: inherit; /* optional: makes links same color as text, or remove if you want default blue */
+}
+
+a:hover {
+    text-decoration: none; /* prevent underline on hover */
+}
+
+:root {
+    --bg1: #0f1724;
+    --bg2: #f986d8;
+    --accent: #1c1b1b;
+    --accent2: #fe4fb8;
+    --muted: #c7a6bc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', system-ui, Arial;
+    color: #eafcff;
+    background: linear-gradient(135deg, var(--bg2), var(--bg1));
+}
+
+
+
+.bg-visual {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(0, 242, 254, 0.02) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.8;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 96px auto 80px;
+    padding: 0 18px;
+}
+
+.navbar {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1180px, 94%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(36, 36, 36, 0.04);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.brand a {
+    font-weight: 800;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #dff6ff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 10px;
+    transition: all 0.18s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent);
+}
+
+.search-wrap input {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.03);
+    color: inherit;
+}
+
+.btn {
+    padding: 8px 14px;
+    border-radius: 22px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn-glow {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    color: #061b22;
+    box-shadow: 0 0 14px rgba(0, 242, 254, 0.25), 0 0 28px rgba(79, 172, 254, 0.18);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: inherit;
+}
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: inherit;
+}
+
+.btn.small {
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+.card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+.msgs {
+    position: fixed;
+    top: 96px;
+    right: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 60;
+}
+
+.msg {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer {
+    padding: 18px;
+    text-align: center;
+    color: var(--muted);
+    opacity: 0.9;
+}
+
+.inline {
+    display: inline-block;
+}
+
+@media (max-width: 900px) {
+    .container {
+        margin-top: 140px;
+        padding: 12px;
+    }
+    .navbar {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    .search-wrap {
+        order: 3;
+        width: 100%;
+    }
+    .nav-links {
+        order: 2;
+        width: 100%;
+        justify-content: space-around;
+    }
+}

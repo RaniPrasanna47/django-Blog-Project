@@ -1,0 +1,15 @@
+.about-hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.about-hero .glow {
+    color: var(--accent);
+    text-shadow: 0 0 12px var(--accent);
+}
+
+.panel {
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 12px;
+}

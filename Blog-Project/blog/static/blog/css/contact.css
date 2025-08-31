@@ -1,0 +1,14 @@
+.contact .input,
+.contact .textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.02);
+    color: inherit;
+    margin: 8px 0;
+}
+
+.contact button {
+    display: inline-block;
+}

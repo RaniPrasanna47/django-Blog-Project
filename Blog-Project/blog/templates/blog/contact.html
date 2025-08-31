@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}Contact • MiniBlog{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'blog/css/contact.css' %}">{% endblock %}
+{% block extra_js %}<script defer src="{% static 'blog/js/contact.js' %}"></script>{% endblock %}
+
+{% block content %}
+<div class="card contact">
+  <h2>Contact</h2>
+  <p>Have feedback? Send a message — this will show a toast.</p>
+  <form id="contactForm">
+    <label>Name</label><input name="name" required class="input">
+    <label>Email</label><input name="email" type="email" required class="input">
+    <label>Message</label><textarea name="message" rows="6" required class="textarea"></textarea>
+    <button class="btn btn-glow" type="submit">Send</button>
+  </form>
+</div>
+{% endblock %}
